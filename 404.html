@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Redirecting...</title>
     <script>
-      // Safe fallback for GitHub Pages without infinite redirect.
+      // Safe fallback for GitHub user site (root domain).
       var l = window.location;
-      var pathSegmentsToKeep = l.hostname.endsWith('github.io') ? 1 : 0;
-      var basePath = '/' + l.pathname.split('/').filter(Boolean).slice(0, pathSegmentsToKeep).join('/') + '/';
+      var basePath = '/';
       var guardKey = '__gh_pages_redirect_once__';
       if (sessionStorage.getItem(guardKey) === '1') {
         sessionStorage.removeItem(guardKey);
