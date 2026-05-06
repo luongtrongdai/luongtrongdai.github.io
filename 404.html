@@ -6,6 +6,9 @@
     <title>Redirecting...</title>
     <script>
       // GitHub Pages SPA redirect (supports project pages and user pages).
+      if (window.location.search.startsWith('?/')) {
+        window.location.replace(window.location.pathname.split('?')[0]);
+      }
       const pathSegmentsToKeep = window.location.hostname.endsWith('github.io') ? 1 : 0;
       const { pathname, search, hash, protocol, host } = window.location;
       const redirectPath = pathname
