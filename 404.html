@@ -5,11 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Redirecting...</title>
     <script>
-      // Safe fallback for GitHub Pages: always go back to app base path.
+      // Safe fallback for GitHub Pages without infinite redirect.
       var l = window.location;
       var pathSegmentsToKeep = l.hostname.endsWith('github.io') ? 1 : 0;
-      var basePath = '/' + l.pathname.split('/').filter(Boolean).slice(0, pathSegmentsToKeep).join('/');
-      l.replace(basePath + '/');
+      var basePath = '/' + l.pathname.split('/').filter(Boolean).slice(0, pathSegmentsToKeep).join('/') + '/';
+      var currentPath = l.pathname;
+      if (currentPath === basePath || currentPath === basePath.slice(0, -1)) {
+        l.replace(basePath + 'index.html');
+      } else {
+        l.replace(basePath);
+      }
     </script>
   </head>
   <body></body>
