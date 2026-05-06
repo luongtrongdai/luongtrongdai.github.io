@@ -9,10 +9,11 @@
       var l = window.location;
       var pathSegmentsToKeep = l.hostname.endsWith('github.io') ? 1 : 0;
       var basePath = '/' + l.pathname.split('/').filter(Boolean).slice(0, pathSegmentsToKeep).join('/') + '/';
-      var currentPath = l.pathname;
-      if (currentPath === basePath || currentPath === basePath.slice(0, -1)) {
-        l.replace(basePath + 'index.html');
+      var guardKey = '__gh_pages_redirect_once__';
+      if (sessionStorage.getItem(guardKey) === '1') {
+        sessionStorage.removeItem(guardKey);
       } else {
+        sessionStorage.setItem(guardKey, '1');
         l.replace(basePath);
       }
     </script>
